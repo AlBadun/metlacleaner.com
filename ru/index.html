@@ -1,0 +1,414 @@
+<!doctype html>
+<!-- Русская страница (адрес /ru/): собрана tools/make_ru.py из index.html и слов main.js — руками не править -->
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <script>
+    // Язык — по адресу: / — английский, /ru/ — русский. Корень без выбора — по языку браузера: русский уходит на /ru/
+    // сразу, до стилей и картинок. Выбор в переключателе помнит сама вкладка (history.state), хранилища браузера нет.
+    (function () {
+      var root = document.documentElement;
+      if (root.lang === 'en' && !(history.state && history.state.lang)) {
+        var list = navigator.languages || [navigator.language || 'en'];
+        for (var i = 0; i < list.length; i++) {
+          var l = String(list[i]).toLowerCase();
+          if (l.indexOf('ru') === 0) { location.replace('/ru/' + location.search + location.hash); return; }
+          if (l.indexOf('en') === 0) break;
+        }
+      }
+      if ('IntersectionObserver' in window) root.classList.add('js');
+    })();
+  </script>
+  <title>METLA Cleaner — Удалил. Передумал. Вернул.</title>
+  <meta name="description" content="METLA Cleaner помогает бережно освободить место на устройстве: удалённые файлы сначала уходят в Карантин, и их можно вернуть, пока они там.">
+  <link rel="canonical" href="https://metlacleaner.com/ru/">
+  <link rel="alternate" hreflang="en" href="https://metlacleaner.com/">
+  <link rel="alternate" hreflang="ru" href="https://metlacleaner.com/ru/">
+  <link rel="alternate" hreflang="x-default" href="https://metlacleaner.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="METLA Cleaner">
+  <meta property="og:title" content="METLA Cleaner — Удалил. Передумал. Вернул.">
+  <meta property="og:description" content="METLA Cleaner помогает бережно освободить место на устройстве: удалённые файлы сначала уходят в Карантин, и их можно вернуть, пока они там.">
+  <meta property="og:url" content="https://metlacleaner.com/ru/">
+  <meta property="og:image" content="https://metlacleaner.com/assets/img/og-ru.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="METLA Cleaner — Удалил. Передумал. Вернул.">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0B0D17">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" href="/assets/img/favicon-96.png" sizes="96x96" type="image/png">
+  <link rel="icon" href="/assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="preload" href="/assets/fonts/syne-800.woff" as="font" type="font/woff" crossorigin>
+  <link rel="preload" href="/assets/fonts/syncopate-400.woff" as="font" type="font/woff" crossorigin>
+  <link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body>
+  <a class="skip" href="#main" data-t="skip">Перейти к&nbsp;содержимому</a>
+
+  <div class="bar" id="bar" inert>
+    <div class="bar__inner">
+      <a class="bar__home" href="#main" aria-label="METLA Cleaner">
+        <img class="bar__sign" src="/assets/img/sign-96.webp" width="96" height="96" alt="">
+        <span class="bar__name"><span class="bar__metla">METLA</span><span class="bar__cleaner">CLEANER</span></span>
+      </a>
+      <div class="lang" role="group" aria-label="Язык">
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        <button type="button" data-lang="ru" aria-pressed="true">RU</button>
+      </div>
+      <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.metla.cleaner&amp;hl=ru">
+        <img lang="en" src="/assets/img/google-play-badge-en.png" width="646" height="250" alt="Get it on Google Play" loading="lazy">
+        <img lang="ru" src="/assets/img/google-play-badge-ru.png" width="646" height="250" alt="Скачать из Google Play" loading="lazy">
+      </a>
+    </div>
+  </div>
+
+  <header class="topbar">
+    <div class="lang" role="group" aria-label="Язык">
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-lang="ru" aria-pressed="true">RU</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="spots" aria-hidden="true">
+        <span class="spot spot--1"></span>
+        <span class="spot spot--2"></span>
+        <span class="spot spot--3"></span>
+      </div>
+
+      <div class="hero__inner">
+        <div class="hero__text">
+          <h1 class="wordmark" id="hero-title">
+            <span class="wordmark__metla">METLA</span>
+            <span class="wordmark__cleaner">CLEANER</span>
+          </h1>
+          <p class="slogan"><span data-t="sloganA">Удалил. Передумал.</span> <span class="slogan__accent" data-t="sloganB">Вернул.</span></p>
+          <p class="lead" data-t="lead">METLA Cleaner помогает бережно освободить место на&nbsp;устройстве: удалённые файлы сначала уходят в&nbsp;Карантин, и&nbsp;их можно вернуть, пока они там.</p>
+          <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.metla.cleaner&amp;hl=ru">
+            <img lang="en" src="/assets/img/google-play-badge-en.png" width="646" height="250" alt="Get it on Google Play" loading="lazy">
+            <img lang="ru" src="/assets/img/google-play-badge-ru.png" width="646" height="250" alt="Скачать из Google Play" loading="lazy">
+          </a>
+          <p class="fact" data-t="fact">Android&nbsp;8 и&nbsp;новее · русский и&nbsp;английский</p>
+        </div>
+
+        <div class="hero__stage">
+          <div class="orb" aria-hidden="true">
+            <canvas></canvas>
+            <img width="1040" height="1040" alt="">
+            <noscript><img src="/assets/img/sphere.webp" width="1040" height="1040" alt=""></noscript>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="screens" aria-labelledby="screens-title">
+      <div class="screens__inner">
+        <h2 class="section-title screens__title" id="screens-title" data-t="screensTitle" data-reveal="all">Что умеет METLA</h2>
+
+        <div class="screens__layout">
+          <div class="screens__stage" aria-hidden="true">
+            <div class="phone">
+              <img class="is-on" data-shot="monitor" width="720" height="1219" alt="" loading="lazy" decoding="async">
+              <img data-shot="cleanable" width="720" height="1219" alt="" loading="lazy" decoding="async">
+              <img data-shot="duplicates" width="720" height="1219" alt="" loading="lazy" decoding="async">
+              <img data-shot="quarantine" width="720" height="1219" alt="" loading="lazy" decoding="async">
+            </div>
+            <ol class="screens__nums">
+              <li class="is-on">1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+            </ol>
+          </div>
+
+          <div class="screens__list" data-reveal="narrow">
+            <ol class="shots" id="shots" aria-label="Снимки экрана" data-t-label="shotsLabel">
+              <li class="shot is-on">
+                <figure>
+                  <div class="phone"><img data-shot="monitor" data-alt="altMonitor" width="720" height="1219" alt="" loading="lazy" decoding="async"><noscript><img src="/assets/img/screen-monitor-ru.webp" width="720" height="1219" alt="Снимок экрана METLA Cleaner: экран «Монитор»"></noscript></div>
+                  <figcaption data-reveal="wide">
+                    <h3 class="shot__title" data-t="shotMonitorT">Понятно, что удалять</h3>
+                    <p class="shot__line" data-t="shotMonitorL">Монитор показывает, что безопасно удалить, а&nbsp;что&nbsp;— проверить</p>
+                  </figcaption>
+                </figure>
+              </li>
+              <li class="shot">
+                <figure>
+                  <div class="phone"><img data-shot="cleanable" data-alt="altCleanable" width="720" height="1219" alt="" loading="lazy" decoding="async"><noscript><img src="/assets/img/screen-cleanable-ru.webp" width="720" height="1219" alt="Снимок экрана METLA Cleaner: экран «Что можно очистить»"></noscript></div>
+                  <figcaption data-reveal="wide">
+                    <h3 class="shot__title" data-t="shotCleanableT">Решаете вы</h3>
+                    <p class="shot__line" data-t="shotCleanableL">Откройте раздел и&nbsp;удалите только то, что выбрали</p>
+                  </figcaption>
+                </figure>
+              </li>
+              <li class="shot">
+                <figure>
+                  <div class="phone"><img data-shot="duplicates" data-alt="altDuplicates" width="720" height="1219" alt="" loading="lazy" decoding="async"><noscript><img src="/assets/img/screen-duplicates-ru.webp" width="720" height="1219" alt="Снимок экрана METLA Cleaner: экран «Дубликаты»"></noscript></div>
+                  <figcaption data-reveal="wide">
+                    <h3 class="shot__title" data-t="shotDuplicatesT">Только точные копии</h3>
+                    <p class="shot__line" data-t="shotDuplicatesL">Совпадают байт в&nbsp;байт&nbsp;— оригинал остаётся</p>
+                  </figcaption>
+                </figure>
+              </li>
+              <li class="shot">
+                <figure>
+                  <div class="phone"><img data-shot="quarantine" data-alt="altQuarantine" width="720" height="1219" alt="" loading="lazy" decoding="async"><noscript><img src="/assets/img/screen-quarantine-ru.webp" width="720" height="1219" alt="Снимок экрана METLA Cleaner: экран «Карантин»"></noscript></div>
+                  <figcaption data-reveal="wide">
+                    <h3 class="shot__title" data-t="shotQuarantineT">Передумали? Верните</h3>
+                    <p class="shot__line" data-t="shotQuarantineL">Удалённое сначала уходит в&nbsp;Карантин&nbsp;— вернуть можно, пока оно там</p>
+                  </figcaption>
+                </figure>
+              </li>
+            </ol>
+            <div class="shots__dots" role="group" aria-label="Снимки экрана" data-t-label="shotsLabel">
+              <button type="button" aria-current="true" aria-label="Снимок 1" data-t-label="dot1"></button>
+              <button type="button" aria-label="Снимок 2" data-t-label="dot2"></button>
+              <button type="button" aria-label="Снимок 3" data-t-label="dot3"></button>
+              <button type="button" aria-label="Снимок 4" data-t-label="dot4"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefits" aria-labelledby="benefits-title">
+      <div class="benefits__inner">
+        <h2 class="section-title" id="benefits-title" data-t="benefitsTitle" data-reveal="all">Бережная очистка</h2>
+        <ul class="benefits__list">
+          <li class="benefit" data-reveal="all">
+            <h3 class="benefit__title" data-t="benefit1T">Время передумать</h3>
+            <p class="benefit__text" data-t="benefit1D">Карантин: по&nbsp;умолчанию файлы хранятся 30&nbsp;дней (бесплатно&nbsp;— 7, 14 или 30&nbsp;дней; с&nbsp;Pro&nbsp;— 60&nbsp;дней или без&nbsp;срока).</p>
+          </li>
+          <li class="benefit" data-reveal="all">
+            <h3 class="benefit__title" data-t="benefit2T">Ваши файлы остаются на&nbsp;устройстве</h3>
+            <p class="benefit__text" data-t="benefit2D">Поиск и&nbsp;очистка идут на&nbsp;самом устройстве. METLA никому не&nbsp;передаёт список ваших приложений.</p>
+          </li>
+          <li class="benefit" data-reveal="all">
+            <h3 class="benefit__title" data-t="benefit3T">Только точные копии</h3>
+            <p class="benefit__text" data-t="benefit3D">Находит точные копии файлов (байт в&nbsp;байт) и&nbsp;оставляет один оригинал.</p>
+          </li>
+          <li class="benefit" data-reveal="all">
+            <h3 class="benefit__title" data-t="benefit4T">Честно о&nbsp;том, что позволяет Android</h3>
+            <p class="benefit__text" data-t="benefit4D">Кэш приложений: с&nbsp;доступом к&nbsp;статистике использования METLA показывает, сколько он занимает, и&nbsp;открывает настройки, где его можно очистить (Android не&nbsp;даёт одному приложению очищать кэш других).</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="how" aria-labelledby="how-title">
+      <div class="how__inner">
+        <h2 class="section-title" id="how-title" data-t="howTitle" data-reveal="all">Как это работает</h2>
+        <ol class="steps">
+          <li class="step" data-reveal="all">
+            <span class="step__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5"/></svg>
+            </span>
+            <div class="step__body">
+              <span class="step__num" aria-hidden="true">01</span>
+              <h3 class="step__title" data-t="step1T">Найдите</h3>
+              <p class="step__text" data-t="step1D">Показывает, что можно очистить, по&nbsp;категориям: эскизы, загрузки, дубликаты, старые и&nbsp;большие файлы, пустые папки.</p>
+            </div>
+          </li>
+          <li class="step" data-reveal="all">
+            <span class="step__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 7h16"/><path d="M9.5 7V4.5h5V7"/><path d="M6.5 7l1 12.5h9l1-12.5"/><path d="M10.5 11v5"/><path d="M13.5 11v5"/></svg>
+            </span>
+            <div class="step__body">
+              <span class="step__num" aria-hidden="true">02</span>
+              <h3 class="step__title" data-t="step2T">Удалите</h3>
+              <p class="step__text" data-t="step2D">Откройте категорию&nbsp;— увидите файлы и&nbsp;удалите только то, что выберете. Удалённые файлы сначала уходят в&nbsp;Карантин.</p>
+            </div>
+          </li>
+          <li class="step" data-reveal="all">
+            <span class="step__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3"/><path d="M4.5 4.5V8H8"/><path d="M12 8.5V12l2.5 1.5"/></svg>
+            </span>
+            <div class="step__body">
+              <span class="step__num" aria-hidden="true">03</span>
+              <h3 class="step__title" data-t="step3T">Верните</h3>
+              <p class="step__text" data-t="step3D">Файлы можно вернуть, пока они там. Место освобождается, когда файлы покидают Карантин.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="motto" aria-labelledby="motto-title">
+      <div class="motto__inner">
+        <h2 class="motto__text" id="motto-title">
+          <span class="motto__word" data-t="mottoW1">Удалил.</span>
+          <span class="motto__word" data-t="mottoW2">Передумал.</span>
+          <span class="motto__word motto__word--accent" data-t="mottoW3">Вернул.</span>
+        </h2>
+      </div>
+    </section>
+
+    <section class="benefits" aria-labelledby="plans-title">
+      <div class="benefits__inner">
+        <h2 class="section-title" id="plans-title" data-t="plansTitle" data-reveal="all">Бесплатно и&nbsp;Pro</h2>
+        <ul class="benefits__list">
+          <li class="benefit" data-reveal="all">
+            <h3 class="benefit__title" data-t="plansFreeT">Бесплатно</h3>
+            <ul class="plans__items">
+              <li data-t="plansF1">3&nbsp;очистки в&nbsp;день</li>
+              <li data-t="plansF2">Откройте категорию&nbsp;— увидите файлы и&nbsp;удалите только то, что выберете</li>
+              <li data-t="plansF3">Карантин: файлы хранятся 7, 14 или 30&nbsp;дней</li>
+              <li data-t="plansF4">Anti-Spy показывает доступы; это не&nbsp;антивирус</li>
+            </ul>
+          </li>
+          <li class="benefit plans__pro" data-reveal="all">
+            <h3 class="benefit__title">Pro</h3>
+            <ul class="plans__items">
+              <li data-t="plansP1">Очистка без&nbsp;ограничений (бесплатно&nbsp;— 3&nbsp;очистки в&nbsp;день)</li>
+              <li data-t="plansP2">Удалить или&nbsp;вернуть всё одним нажатием</li>
+              <li data-t="plansP3">Ночная автоочистка</li>
+              <li data-t="plansP4">Радар проверяет раз в&nbsp;6&nbsp;часов: сообщает (на&nbsp;Android&nbsp;10 и&nbsp;новее), если приложение, которое вы ограничили, снова работает в&nbsp;фоне, а&nbsp;на&nbsp;Android&nbsp;8–&#8288;13 просит Android остановить его фоновую работу</li>
+              <li data-t="plansP5">Device Pulse с&nbsp;обновлением в&nbsp;реальном времени и&nbsp;более долгое хранение в&nbsp;Карантине</li>
+            </ul>
+          </li>
+          <li class="benefit plans__buy" data-reveal="all">
+            <h3 class="benefit__title" data-t="plansBuyT">Варианты покупки</h3>
+            <ul class="plans__items">
+              <li data-t="plansB1">Подписка на&nbsp;месяц, на&nbsp;3&nbsp;месяца или на&nbsp;год либо разовая покупка&nbsp;— для себя или&nbsp;для семьи</li>
+              <li data-t="cta2">Пробный период 7&nbsp;дней&nbsp;— один раз на&nbsp;аккаунт Google Play (кроме&nbsp;России)</li>
+              <li data-t="plansB3">Цену для вашей страны показывает Google Play</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="faq" aria-labelledby="faq-title">
+      <div class="faq__inner">
+        <h2 class="section-title" id="faq-title" data-t="faqTitle" data-reveal="all">Вопросы и ответы</h2>
+        <div class="faq__list" data-reveal="all">
+          <details class="faq__item">
+            <summary class="faq__q"><span data-t="q1">Anti-Spy&nbsp;— это антивирус?</span><svg class="faq__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></summary>
+            <div class="faq__a">
+              <p data-t="a1">Активность и&nbsp;Anti-Spy: сколько работают приложения и&nbsp;каким выдан или&nbsp;кто просит доступ к&nbsp;камере, микрофону, местоположению, контактам, телефону, СМС и&nbsp;памяти&nbsp;— с&nbsp;переходом в&nbsp;настройки, чтобы его изменить. Anti-Spy показывает доступы; это не&nbsp;антивирус.</p>
+            </div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q"><span data-t="q2">Зачем METLA доступ ко&nbsp;всем файлам?</span><svg class="faq__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></summary>
+            <div class="faq__a">
+              <p data-t="a2">На&nbsp;Android&nbsp;11 и&nbsp;новее METLA нужен доступ ко&nbsp;всем файлам, чтобы находить дубликаты файлов любого типа, пустые папки и&nbsp;старые загрузки во&nbsp;всей памяти и&nbsp;переносить удалённые файлы в&nbsp;Карантин и&nbsp;обратно. Без&nbsp;него эти функции не&nbsp;запускаются. METLA никогда не&nbsp;открывает личные папки других приложений.</p>
+            </div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q"><span data-t="q3">Что будет, когда Карантин заполнится?</span><svg class="faq__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></summary>
+            <div class="faq__a">
+              <p data-t="a3">Объём Карантина ограничен (по&nbsp;умолчанию 1&nbsp;ГБ, можно изменить): когда место кончается, METLA предупреждает и&nbsp;спрашивает, прежде чем удалить самые старые файлы насовсем.</p>
+            </div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q"><span data-t="q4">Когда отправляется аналитика?</span><svg class="faq__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></summary>
+            <div class="faq__a">
+              <p data-t="a4">Разрешения, о&nbsp;которых Android спрашивает вас, METLA просит, когда они нужны функции. Аналитика и&nbsp;отчёты о&nbsp;сбоях отправляются только после вашего согласия, их можно выключить в&nbsp;Настройках.</p>
+              <p><a class="faq__link" href="https://albadun.github.io/metla-privacy/" data-link="privacy" data-t="privacy">Политика конфиденциальности</a></p>
+            </div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q"><span data-t="q6">Как работает пробный период?</span><svg class="faq__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></summary>
+            <div class="faq__a">
+              <p data-t="a6">Пробный период 7&nbsp;дней&nbsp;— один раз на&nbsp;аккаунт Google Play. Если не&nbsp;отменить его до&nbsp;конца, спишется цена тарифа, дальше подписка продлевается сама, пока вы не&nbsp;отмените её в&nbsp;Google Play. Вся оплата&nbsp;— через Google Play. Из&nbsp;России оформить Pro и&nbsp;пробный период сейчас нельзя: Google Play там не&nbsp;принимает оплату с&nbsp;марта 2022&nbsp;года. Бесплатная часть METLA работает.</p>
+            </div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q"><span data-t="q7">Pro работает на&nbsp;других моих устройствах?</span><svg class="faq__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></summary>
+            <div class="faq__a">
+              <p data-t="a7">Pro действует на&nbsp;всех устройствах с&nbsp;тем же аккаунтом Google Play; у&nbsp;участника семьи&nbsp;— через вход в&nbsp;аккаунт METLA.</p>
+            </div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q"><span data-t="q8">Какие устройства и&nbsp;языки?</span><svg class="faq__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></summary>
+            <div class="faq__a">
+              <p data-t="a8">Работает на&nbsp;телефонах и&nbsp;планшетах с&nbsp;Android&nbsp;8 и&nbsp;новее, на&nbsp;русском и&nbsp;английском.</p>
+            </div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q"><span data-t="q9">Как связаться с&nbsp;поддержкой?</span><svg class="faq__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg></summary>
+            <div class="faq__a">
+              <p data-t="a9">Вопросы и&nbsp;идеи&nbsp;— пишите нам из&nbsp;приложения: Профиль → Поддержка.</p>
+              <p><a class="faq__link" href="mailto:metla.support@gmail.com">metla.support@gmail.com</a></p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" aria-labelledby="cta-title">
+      <div class="cta__inner" data-reveal="all">
+        <img class="cta__sphere" src="/assets/img/sphere-cta.webp" width="480" height="480" alt="" loading="lazy" decoding="async">
+        <h2 class="cta__name" id="cta-title">
+          <span class="cta__metla">METLA</span>
+          <span class="cta__cleaner">CLEANER</span>
+        </h2>
+        <p class="cta__ask" data-t="ctaAsk">Готовы бережно освободить место на&nbsp;устройстве?</p>
+        <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.metla.cleaner&amp;hl=ru">
+          <img lang="en" src="/assets/img/google-play-badge-en.png" width="646" height="250" alt="Get it on Google Play" loading="lazy">
+          <img lang="ru" src="/assets/img/google-play-badge-ru.png" width="646" height="250" alt="Скачать из Google Play" loading="lazy">
+        </a>
+        <p class="fact" data-t="fact">Android&nbsp;8 и&nbsp;новее · русский и&nbsp;английский</p>
+        <ul class="cta__facts">
+          <li data-t="cta1">Бесплатно&nbsp;— 3&nbsp;очистки в&nbsp;день</li>
+          <li data-t="cta2">Пробный период 7&nbsp;дней&nbsp;— один раз на&nbsp;аккаунт Google Play (кроме&nbsp;России)</li>
+          <li data-t="cta3">Вся оплата&nbsp;— через Google Play</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__cols">
+        <div class="footer__col">
+          <h2 class="footer__head" data-t="footSupport">Поддержка</h2>
+          <ul class="footer__links">
+            <li><a href="mailto:metla.support@gmail.com">metla.support@gmail.com</a></li>
+            <li><a href="https://t.me/METLA_support_bot">Telegram: @METLA_support_bot</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h2 class="footer__head" data-t="footLegal">Документы</h2>
+          <ul class="footer__links">
+            <li><a href="https://albadun.github.io/metla-privacy/" data-link="privacy" data-t="privacy">Политика конфиденциальности</a></li>
+            <li><a href="https://albadun.github.io/metla-privacy/terms/" data-link="terms" data-t="terms">Условия использования</a></li>
+          </ul>
+          <p class="footer__note" data-t="footData">Сайт не&nbsp;ставит cookie и&nbsp;не&nbsp;считает посетителей. Его размещает GitHub Pages: GitHub записывает и&nbsp;хранит IP-&#8288;адрес каждого посетителя для&nbsp;безопасности.</p>
+        </div>
+        <div class="footer__col">
+          <h2 class="footer__head" data-t="footSocial">Соцсети</h2>
+          <ul class="footer__social">
+            <li>
+              <a class="footer__icon" href="https://t.me/metla_cleaner" data-link="telegram" aria-label="METLA Cleaner в&nbsp;Telegram" data-t-label="socialTelegram">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+              </a>
+            </li>
+            <li>
+              <a class="footer__icon" href="https://x.com/METLA_Cleaner" aria-label="METLA Cleaner в&nbsp;X" data-t-label="socialX">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__base">
+        <p data-t="copyright">© 2026 Al Badu team. Все права защищены.</p>
+        <p data-t="trademark">Google Play и&nbsp;логотип Google Play являются товарными знаками Google LLC.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="page-end" aria-hidden="true"></div>
+
+  <script src="/assets/js/sphere.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/sections.js"></script>
+</body>
+</html>

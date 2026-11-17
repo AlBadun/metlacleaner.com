@@ -1,0 +1,1234 @@
+/* METLA — сайт. Цвета, шрифты и движение — навык metla-site (DESIGN_SYSTEM METLA, разделы 2, 3, 4.1, 11). */
+
+@font-face { font-family: "Space Grotesk"; src: url("../fonts/space-grotesk-400.woff") format("woff"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Space Grotesk"; src: url("../fonts/space-grotesk-700.woff") format("woff"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Onest"; src: url("../fonts/onest-400.woff") format("woff"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Onest"; src: url("../fonts/onest-700.woff") format("woff"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Syne"; src: url("../fonts/syne-800.woff") format("woff"); font-weight: 800; font-display: block; }
+@font-face { font-family: "Syncopate"; src: url("../fonts/syncopate-400.woff") format("woff"); font-weight: 400; font-display: block; }
+
+:root {
+  --void: #0B0D17;
+  --deep: #151A27;
+  --stroke: #1F2538;
+  --aqua: #00F0C8;
+  --violet: #9966CC;
+  --text: #F0F3FA;
+  --text-read: rgba(240, 243, 250, 0.85);
+  --steel: #9BA4B5;
+  --saffron: #FFD166;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --breath: cubic-bezier(0.37, 0, 0.63, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  background: var(--void);
+  color: var(--text);
+  -webkit-text-size-adjust: 100%;
+  /* элемент в фокусе браузер ставит ниже закреплённой шапки, а не под неё (WCAG 2.2, 2.4.11): шапка 56 px + запас 16;
+     от 768 — 64 + 16 (ниже, у шапки) */
+  scroll-padding-top: 72px;
+}
+
+body {
+  margin: 0;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html:lang(ru) body { font-family: "Onest", system-ui, sans-serif; }
+
+img { max-width: 100%; }
+
+:focus-visible {
+  outline: 2px solid var(--aqua);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+.skip {
+  position: absolute;
+  left: 16px;
+  top: 12px;
+  z-index: 20;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--deep);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+  text-decoration: none;
+  transform: translateY(-160%);
+}
+.skip:focus { transform: none; }
+
+/* Язык */
+.topbar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  padding: 16px 24px;
+}
+
+.lang {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--stroke);
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.lang button {
+  border: 0;
+  border-radius: 9999px;
+  padding: 4px 12px;
+  background: transparent;
+  color: var(--steel);
+  font: 700 14px/20px "Space Grotesk", system-ui, sans-serif;
+  cursor: pointer;
+  transition: color 300ms var(--ease), background-color 300ms var(--ease), transform 120ms var(--ease);
+}
+.lang button:hover { color: var(--text); }
+.lang button:active { transform: scale(0.98); }
+.lang button[aria-pressed="true"] {
+  color: var(--aqua);
+  background: rgba(0, 240, 200, 0.15);
+}
+
+/* Первый экран */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding: 64px 24px 48px;
+  isolation: isolate;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  gap: 24px;
+  text-align: center;
+}
+
+.hero__text { max-width: 680px; }
+
+.wordmark {
+  margin: 0;
+  font-weight: 400;
+}
+
+.wordmark__metla,
+.wordmark__cleaner {
+  display: block;
+  width: fit-content;
+  margin-inline: auto;
+}
+
+/* METLA — Syne ExtraBold, аква → фиолет по ширине самого слова */
+.wordmark__metla {
+  font-family: "Syne", sans-serif;
+  font-weight: 800;
+  font-size: 60px;
+  line-height: 60px;
+  background-image: linear-gradient(90deg, var(--aqua), var(--violet));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* CLEANER — Syncopate заглавными, сталь; кегль — половина METLA */
+.wordmark__cleaner {
+  margin-top: 8px;
+  font-family: "Syncopate", sans-serif;
+  font-size: 30px;
+  line-height: 36px;
+  color: var(--steel);
+}
+
+.slogan {
+  margin: 16px 0 0;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  color: rgba(240, 243, 250, 0.9);
+  letter-spacing: 0.5px;
+  text-wrap: balance;
+}
+.slogan__accent { color: var(--aqua); }
+
+.lead {
+  margin: 16px auto 0;
+  max-width: 520px;
+  color: var(--text-read);
+  text-wrap: pretty;
+}
+
+.play-badge {
+  display: inline-block;
+  margin-top: 24px;
+  border-radius: 10px;
+  transition: transform 300ms var(--ease);
+}
+.play-badge img {
+  display: block;
+  height: 52px;
+  width: auto;
+}
+.play-badge:hover { transform: translateY(-2px); }
+.play-badge:active { transform: scale(0.98); transition-duration: 40ms; }
+
+/* В значке обе картинки; видна (и грузится — loading="lazy") только картинка своего языка */
+html:lang(ru) .play-badge img[lang="en"],
+html:lang(en) .play-badge img[lang="ru"] { display: none; }
+
+.fact {
+  margin: 12px 0 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--steel);
+}
+
+/* Сцена: сфера, ничем не закрытая (снимки экрана — в следующем разделе, решение владельца 02.11.2026 в 14:17:02) */
+.hero__stage {
+  order: -1;
+  position: relative;
+  width: min(100%, 340px);
+}
+
+.orb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.orb canvas,
+.orb img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.orb canvas { opacity: 0; }
+.orb.is-live canvas { opacity: 1; }
+.orb.is-live img { visibility: hidden; }
+
+/* Фон — мягкие пятна (DESIGN_SYSTEM 11.4) */
+.spots {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.spot {
+  position: absolute;
+  width: var(--d);
+  height: var(--d);
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(var(--c), var(--a)) 0%, rgba(var(--c), calc(var(--a) * 0.6)) 33.3%, rgba(var(--c), calc(var(--a) * 0.22)) 66.6%, rgba(var(--c), 0) 100%);
+  animation: drift var(--dur) var(--breath) infinite alternate;
+  will-change: transform;
+}
+
+.spot--1 { --c: 153, 102, 204; --a: 0.22; --d: 220px; --dx: 14px; --dy: 18px; --dur: 9s; left: -60px; top: -80px; }
+.spot--2 { --c: 0, 240, 200; --a: 0.14; --d: 250px; --dx: -18px; --dy: -12px; --dur: 11s; right: -60px; bottom: -70px; }
+.spot--3 { --c: 153, 102, 204; --a: 0.14; --d: 160px; --dx: -16px; --dy: 0px; --dur: 7s; left: -30px; top: calc(50% - var(--d) / 2); }
+
+@keyframes drift {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(var(--dx), var(--dy), 0); }
+}
+
+.is-hidden .spot { animation-play-state: paused; }
+/* Пятна движутся только при живой сфере (класс is-orb-live ставит sphere.js); сфера — неподвижная картинка (нет WebGL,
+   нет скриптов, «уменьшить движение») — пятна стоят (навык B7; решение владельца 03.11.2026 — без :has(), для старых
+   браузеров) */
+.hero:not(.is-orb-live) .spot { animation: none; }
+
+@media (min-width: 768px) {
+  .hero { padding: 80px 32px 64px; }
+  .wordmark__metla { font-size: 72px; line-height: 72px; }
+  .wordmark__cleaner { margin-top: 12px; font-size: 36px; line-height: 40px; }
+  .slogan { margin-top: 24px; font-size: 30px; line-height: 36px; }
+  .lead { font-size: 18px; line-height: 28px; }
+  .play-badge { margin-top: 32px; }
+  .play-badge img { height: 56px; }
+  .hero__stage { width: min(100%, 400px); }
+
+  .spot--1 { --d: 335px; left: -91px; top: -122px; }
+  .spot--2 { --d: 381px; right: -91px; bottom: -107px; }
+  .spot--3 { --d: 244px; left: -46px; }
+}
+
+@media (min-width: 1024px) {
+  .hero__inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    align-items: center;
+    justify-items: start;
+    gap: 48px;
+    text-align: left;
+  }
+  .hero__stage { order: 0; justify-self: end; width: min(100%, 560px); }
+  .wordmark__metla,
+  .wordmark__cleaner,
+  .lead { margin-inline: 0; }
+  .wordmark__metla { font-size: 96px; line-height: 96px; }
+  .wordmark__cleaner { font-size: 48px; line-height: 48px; }
+  .play-badge img { height: 60px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spot { animation: none; }
+  .play-badge,
+  .lang button { transition: none; }
+}
+
+/* Шапка — появляется после первого экрана (docs/SITE_PLAN.md, раздел 3) */
+.bar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 15;
+  background: rgba(11, 13, 23, 0.9);
+  border-bottom: 1px solid var(--stroke);
+  opacity: 0;
+  transform: translateY(-8px);
+  visibility: hidden;
+  transition: opacity 300ms var(--ease), transform 300ms var(--ease), visibility 0s linear 300ms;
+}
+.bar.is-on {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+  transition: opacity 300ms var(--ease), transform 300ms var(--ease);
+}
+
+.bar__inner {
+  max-width: 1200px;
+  height: 56px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bar__home {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: auto;
+  text-decoration: none;
+}
+.bar__sign {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+/* Имя — как на первом экране: METLA : CLEANER = 2 : 1, промежуток — 1/7 кегля METLA */
+.bar__name { display: flex; flex-direction: column; }
+.bar__metla {
+  font-family: "Syne", sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 16px;
+  background-image: linear-gradient(90deg, var(--aqua), var(--violet));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  width: fit-content;
+}
+.bar__cleaner {
+  display: none;
+  margin-top: 3px;
+  font-family: "Syncopate", sans-serif;
+  font-size: 10px;
+  line-height: 10px;
+  color: var(--steel);
+}
+
+/* Значок Google Play: видимая высота 32 / 36 px (Google — не меньше 28 px, поле — четверть высоты).
+   Видимая часть файла: EN — 0,672 его высоты, RU — 0,768 (навык, B6). */
+.bar .play-badge { margin: 0; border-radius: 8px; }
+.bar .play-badge img { height: 48px; }
+.bar .play-badge img[lang="ru"] { height: 42px; }
+.bar .play-badge.is-off {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 300ms var(--ease), visibility 0s linear 300ms;
+}
+
+.bar .lang button { padding: 4px 8px; }
+
+/* Уже 390 px имя не помещается рядом с английским значком — остаётся знак */
+@media (max-width: 389px) {
+  .bar__name { display: none; }
+}
+
+/* Снимки — «Что умеет METLA» (план, 2.2) */
+.screens {
+  position: relative;
+  padding: 64px 0;
+  overflow-x: clip;
+  isolation: isolate;
+}
+
+.screens__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Заголовок раздела ниже первого экрана — TextPrimary, 30 / 36 / 48 */
+.section-title {
+  margin: 0 0 32px;
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 700;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.screens__layout { position: relative; }
+
+/* Мягкое неподвижное пятно AquaCore за телефоном — как пятно 2 фона, без размытия */
+.screens__layout::before,
+.screens__stage::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 520px;
+  height: 520px;
+  left: 50%;
+  top: 42%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(0, 240, 200, 0.14) 0%, rgba(0, 240, 200, 0.084) 33.3%, rgba(0, 240, 200, 0.031) 66.6%, rgba(0, 240, 200, 0) 100%);
+  pointer-events: none;
+}
+
+/* Рамка телефона — CSS; внутри только настоящий снимок (B6) */
+.phone {
+  display: grid;
+  padding: 8px;
+  border-radius: 40px;
+  background: var(--deep);
+  border: 1px solid var(--stroke);
+}
+.phone img {
+  grid-area: 1 / 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 32px;
+}
+
+/* Картинку без адреса (его ставит скрипт) не рисовать: без скриптов браузер обводит её рамкой. Место под ней остаётся
+   (страница не прыгает), поверх — картинка из <noscript>. Сам <noscript> не трогать: при скриптах его display, кроме
+   none, выводит его содержимое текстом */
+img:not([src]) { visibility: hidden; }
+.phone { position: relative; }
+.phone noscript img { position: absolute; top: 8px; left: 8px; width: calc(100% - 16px); }
+
+.screens__stage { display: none; position: relative; }
+
+/* Телефон и планшет: лента, снимок встаёт по центру */
+.shots {
+  list-style: none;
+  margin: 0;
+  padding: 0 11% 8px;
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  border-radius: 8px;
+}
+.shots::-webkit-scrollbar { display: none; }
+
+/* ширина снимка — содержимое ленты между полями 11 %: виден край соседнего */
+.shot {
+  flex: 0 0 100%;
+  max-width: 280px;
+  scroll-snap-align: center;
+}
+.shot figure { margin: 0; }
+.shot figcaption {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.shot__title {
+  margin: 0;
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 700;
+  text-wrap: balance;
+}
+.shot__line {
+  margin: 4px 0 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--text-read);
+  text-wrap: pretty;
+}
+
+.shots__dots {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 16px;
+}
+.shots__dots button {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+/* не текущая точка — сталь 0,6: 3,45 : 1 на VoidSpace (знак кнопки, WCAG 1.4.11 — от 3 : 1; при 0,45 было 2,44) */
+.shots__dots button::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--steel);
+  opacity: 0.6;
+  transition: opacity 300ms var(--ease), background-color 300ms var(--ease);
+}
+.shots__dots button:hover::before { opacity: 0.8; }
+.shots__dots button[aria-current="true"]::before { background: var(--aqua); opacity: 1; }
+
+/* Без скриптов (нет класса .js) листать ленту точками нечем — все снимки сразу (план, раздел 5): на телефоне столбиком,
+   от 768 — по два в ряд, от 1024 — четыре в ряд; точек нет */
+html:not(.js) .shots {
+  display: grid;
+  grid-template-columns: minmax(0, 280px);
+  justify-content: center;
+  gap: 40px;
+  padding: 0;
+  overflow: visible;
+  scroll-snap-type: none;
+}
+html:not(.js) .shot { max-width: none; }
+html:not(.js) .shots__dots { display: none; }
+
+.screens__nums {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin: 16px 0 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+  color: var(--steel);
+}
+.screens__nums li { transition: color 300ms var(--ease); }
+.screens__nums li.is-on { color: var(--aqua); }
+
+/* Выгоды — «Бережная очистка» (план, 2.3): заливка и рамка — как у карточки-эталона приложения (DESIGN_SYSTEM 3.3, 3.4) */
+.benefits { padding: 64px 0; }
+
+.benefits__inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.benefits__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.benefit {
+  padding: 24px;
+  border-radius: 24px;
+  border: 1px solid rgba(0, 240, 200, 0.25);
+  background: linear-gradient(180deg, rgba(0, 240, 200, 0.08), rgba(153, 102, 204, 0.04));
+}
+
+.benefit__title {
+  margin: 0;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 700;
+  text-wrap: balance;
+}
+
+.benefit__text {
+  margin: 8px 0 0;
+  color: var(--text-read);
+  text-wrap: pretty;
+}
+
+/* Бесплатно и Pro: те же карточки, что у выгод, кнопок и цен нет; SaffronAccent — только у Pro (B4) */
+.plans__items {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  color: var(--text-read);
+}
+.plans__items li {
+  position: relative;
+  padding-left: 16px;
+  text-wrap: pretty;
+}
+.plans__items li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--aqua);
+}
+.plans__pro .benefit__title { color: var(--saffron); }
+.plans__pro .plans__items li::before { background: var(--saffron); }
+
+/* Как это работает (план, 2.4): три шага с номером и своим значком — линии ровной толщины (B6) */
+.how { padding: 64px 0; }
+
+.how__inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+}
+
+.step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: 16px;
+  padding-bottom: 32px;
+}
+.step:last-child { padding-bottom: 0; }
+
+/* линия пути — от значка к значку */
+.step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 24px;
+  top: 56px;
+  bottom: 8px;
+  width: 1px;
+  background: var(--stroke);
+}
+
+/* плашка значка — как GlassIcon в приложении: скругление 10 при 40 dp → 12 при 48 px, рамка 0,5 и заливка 0,15 цветом
+   значка (DESIGN_SYSTEM 3.3, 5.1; решение владельца 02.11.2026 в 19:52:11 — кружков у значков нет); фон непрозрачный —
+   линия пути под плашкой не видна */
+.step__icon {
+  position: relative;
+  z-index: 1;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  color: var(--aqua);
+  border: 1px solid rgba(0, 240, 200, 0.5);
+  background: linear-gradient(rgba(0, 240, 200, 0.15), rgba(0, 240, 200, 0.15)), var(--void);
+}
+.step__icon svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.step__num {
+  display: block;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--steel);
+}
+
+.step__title {
+  margin: 4px 0 0;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 700;
+}
+
+.step__text {
+  max-width: 560px;
+  margin: 8px 0 0;
+  color: var(--text-read);
+  text-wrap: pretty;
+}
+
+/* Слоган — крупно, отдельным разделом (B11; план, 2.5): 48 / 72 / 96 px; на телефоне — слово в строке,
+   от 768 — «Delete. Rethink.» / «Restore.»; акцент — как в первом экране. Слова светлеют только прозрачностью. */
+.motto { padding: 96px 0; }
+
+.motto__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  text-align: center;
+}
+
+.motto__text {
+  margin: 0;
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.motto__word {
+  display: block;
+  transition: opacity 300ms var(--ease);
+}
+.motto__word--accent { color: var(--aqua); }
+/* тусклое слово — 0,45: крупный текст и на остановке прокрутки не ниже 3 : 1 (WCAG 1.4.3) — TextPrimary 4,18, AquaCore 3,38;
+   при 0,3 было 2,49 и 2,12 */
+.js .motto__word:not(.is-lit) { opacity: 0.45; }
+
+/* Вопросы и ответы (план, 2.6): вопрос — плашка раздела, как в приложении (AccordionToggleFrame, DESIGN_SYSTEM 9):
+   скругление 14, заливка аква 0,08 → фиолет 0,04, рамка аква 0,3, надпись Bold с разрядкой 0,5; стрелка поворачивается
+   за 250 мс (11.3). Родной <details>: ответ открывается сразу, Enter и пробел — у браузера. */
+.faq { padding: 64px 0; }
+
+.faq__inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.faq__list {
+  display: grid;
+  gap: 12px;
+}
+
+.faq__q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 240, 200, 0.3);
+  background: linear-gradient(180deg, rgba(0, 240, 200, 0.08), rgba(153, 102, 204, 0.04));
+  color: var(--aqua);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-wrap: pretty;
+  list-style: none;
+  cursor: pointer;
+  transition: border-color 150ms var(--ease), transform 300ms var(--ease);
+}
+.faq__q::-webkit-details-marker { display: none; }
+.faq__q:hover { border-color: rgba(0, 240, 200, 0.5); }
+.faq__q:active { transform: scale(0.98); transition-duration: 40ms; }
+.faq__q:focus-visible { border-radius: 14px; }
+
+/* стрелка 20 px — значок плашки приложения ic_chevron_down (заливка, без обводки); поворот — кривая Compose
+   по умолчанию, как у плашки в приложении */
+.faq__arrow {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.faq__item[open] .faq__arrow { transform: rotate(180deg); }
+
+/* 17 = поле плашки 16 + рамка 1: ответ начинается на одной линии с вопросом */
+.faq__a {
+  padding: 12px 17px 12px;
+  color: var(--text-read);
+}
+.faq__a p {
+  margin: 0;
+  text-wrap: pretty;
+}
+.faq__a p + p { margin-top: 8px; }
+.faq__a ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.faq__a li {
+  position: relative;
+  padding-left: 16px;
+  text-wrap: pretty;
+}
+.faq__a li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--aqua);
+}
+
+.faq__link {
+  color: var(--aqua);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.faq__link:hover { text-decoration-thickness: 2px; }
+
+/* Призыв (план, 2.7): небольшая неподвижная сфера (та же картинка меньшим файлом), имя, тот же значок Google Play,
+   строка-факт и три факта снятия риска — по центру. Пока этот значок на экране, значок шапки спрятан (sections.js). */
+.cta { padding: 64px 0; }
+
+.cta__inner {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 16px;
+  text-align: center;
+}
+
+.cta__sphere {
+  display: block;
+  width: 160px;
+  height: 160px;
+  margin: 0 auto;
+}
+
+.cta__name {
+  margin: 16px 0 0;
+  font-weight: 400;
+}
+
+.cta__metla,
+.cta__cleaner {
+  display: block;
+  width: fit-content;
+  margin-inline: auto;
+}
+
+/* Имя — как на первом экране: METLA : CLEANER = 2 : 1, промежуток — около 1/7 кегля METLA */
+.cta__metla {
+  font-family: "Syne", sans-serif;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 48px;
+  background-image: linear-gradient(90deg, var(--aqua), var(--violet));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.cta__cleaner {
+  margin-top: 8px;
+  font-family: "Syncopate", sans-serif;
+  font-size: 24px;
+  line-height: 28px;
+  color: var(--steel);
+}
+
+/* финал — вопрос к человеку (приём AX1, решение владельца 05.11.2026 в 08:26:12): под именем, над значком */
+.cta__ask {
+  margin: 24px 0 0;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  color: var(--text);
+  text-wrap: balance;
+}
+
+/* три факта — списком, как ответ 5 в вопросах; столбец по центру, строки — от общего левого края */
+.cta__facts {
+  list-style: none;
+  width: fit-content;
+  max-width: 100%;
+  margin: 24px auto 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  text-align: left;
+  color: var(--text-read);
+}
+.cta__facts li {
+  position: relative;
+  padding-left: 16px;
+  text-wrap: pretty;
+}
+.cta__facts li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--aqua);
+}
+
+/* Подвал (план, 2.8): столбцы «Поддержка», «Документы», «Соцсети»; внизу — © и строка о товарном знаке */
+.footer {
+  padding: 40px 0;
+  border-top: 1px solid var(--stroke);
+}
+
+.footer__inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.footer__cols {
+  display: grid;
+  gap: 32px;
+}
+
+.footer__head {
+  margin: 0 0 8px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+}
+
+.footer__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  justify-items: start;
+  gap: 4px;
+  font-size: 14px;
+  line-height: 20px;
+}
+/* поле 4 px сверху и снизу — ссылка 28 px в высоту, по ней легче попасть пальцем */
+.footer__links a {
+  display: inline-block;
+  padding: 4px 0;
+  color: var(--steel);
+  text-decoration: underline;
+  text-decoration-color: rgba(155, 164, 181, 0.4);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 150ms var(--ease), text-decoration-color 150ms var(--ease);
+}
+.footer__links a:hover {
+  color: var(--text);
+  text-decoration-color: currentColor;
+}
+/* данные посетителей сайта (Юрист 6, С-2, 15.11.2026) — под ссылками «Документов», мелко, как строки внизу подвала */
+.footer__note {
+  max-width: 280px;
+  margin: 8px 0 0;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--steel);
+  text-wrap: pretty;
+}
+
+/* знаки соцсетей — один цвет, плашка как GlassIcon (B6): 48 px, скругление 12, рамка 0,5 и заливка 0,15 цвета значка */
+.footer__social {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+  display: flex;
+  gap: 12px;
+}
+
+.footer__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  color: var(--aqua);
+  border: 1px solid rgba(0, 240, 200, 0.5);
+  background-color: rgba(0, 240, 200, 0.15);
+  transition: background-color 150ms var(--ease), transform 120ms var(--ease);
+}
+.footer__icon:hover { background-color: rgba(0, 240, 200, 0.22); }
+.footer__icon:active { transform: scale(0.98); transition-duration: 40ms; }
+.footer__icon svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.footer__base {
+  margin-top: 40px;
+  display: grid;
+  gap: 8px;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--steel);
+}
+.footer__base p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+/* Страница 404 (site/404.html): сфера и имя — как в призыве (те же классы), заголовок и одна ссылка — на главную своего
+   языка, по центру экрана */
+.notfound {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 16px;
+  text-align: center;
+}
+.notfound__title {
+  margin: 32px 0 0;
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 700;
+  text-wrap: balance;
+}
+/* ссылка — плашкой, как значок в плашке (B6): рамка 0,5 и заливка 0,15 цвета аквы; 48 px в высоту */
+.notfound__home {
+  margin-top: 24px;
+  padding: 12px 24px;
+  border: 1px solid rgba(0, 240, 200, 0.5);
+  border-radius: 9999px;
+  background-color: rgba(0, 240, 200, 0.15);
+  color: var(--aqua);
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 150ms var(--ease), transform 120ms var(--ease);
+}
+.notfound__home:hover { background-color: rgba(0, 240, 200, 0.22); }
+.notfound__home:active { transform: scale(0.98); transition-duration: 40ms; }
+
+@media (min-width: 768px) {
+  .notfound { padding: 64px 32px; }
+  .notfound__title { margin-top: 40px; font-size: 36px; line-height: 40px; }
+  .notfound__home { margin-top: 32px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .notfound__home { transition: none; }
+}
+
+/* Появление при прокрутке (B7): подъём 32 px и прозрачность, 700 мс, один раз; по очереди — через --d */
+[data-reveal] { transition: opacity 700ms var(--ease) var(--d, 0ms), transform 700ms var(--ease) var(--d, 0ms); }
+.js [data-reveal="all"]:not(.is-in) { opacity: 0; transform: translateY(32px); }
+
+@media (min-width: 768px) {
+  html { scroll-padding-top: 80px; }
+  .bar__inner { height: 64px; padding: 0 32px; gap: 12px; }
+  .bar__metla { font-size: 20px; line-height: 20px; }
+  .bar .lang button { padding: 4px 12px; }
+  .bar__cleaner { display: block; }
+  .bar .play-badge img { height: 54px; }
+  .bar .play-badge img[lang="ru"] { height: 47px; }
+
+  .screens { padding: 80px 0; }
+  .screens__inner { padding: 0 32px; }
+  .section-title { margin-bottom: 40px; font-size: 36px; line-height: 40px; }
+
+  /* два снимка и край третьего */
+  .shots { padding: 0 0 8px; }
+  .shot { flex-basis: 42%; max-width: 320px; scroll-snap-align: start; }
+  .shot__line { font-size: 16px; line-height: 24px; }
+  html:not(.js) .shots { grid-template-columns: repeat(2, minmax(0, 320px)); gap: 40px 32px; }
+
+  /* выгоды 2 × 2; карточки ряда появляются по очереди, шаг 80 мс */
+  .benefits { padding: 80px 0; }
+  .benefits__inner { padding: 0 32px; }
+  .benefits__list { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .benefit { padding: 32px; }
+  .benefit:nth-child(2) { --d: 80ms; }
+  .benefit:nth-child(3) { --d: 160ms; }
+  .benefit:nth-child(4) { --d: 240ms; }
+  .plans__buy { grid-column: 1 / -1; }
+
+  .how { padding: 80px 0; }
+  .how__inner { padding: 0 32px; }
+  .step { padding-bottom: 40px; }
+
+  /* «Удалил. Передумал.» в одну строку: 60 px — 596 px шириной, 72 px — 715, 96 px — 954 (замер 02.11.2026) */
+  .motto__inner { padding: 0 32px; }
+  .motto__text { font-size: 60px; line-height: 68px; }
+  .motto__word { display: inline; }
+  .motto__word--accent { display: block; }
+
+  .faq { padding: 80px 0; }
+  .faq__inner { padding: 0 32px; }
+  .faq__q { padding: 16px 24px; font-size: 18px; line-height: 28px; }
+  .faq__a { padding: 16px 25px; }
+
+  .cta { padding: 80px 0; }
+  .cta__inner { padding: 0 32px; }
+  .cta__sphere { width: 200px; height: 200px; }
+  .cta__name { margin-top: 24px; }
+  .cta__metla { font-size: 60px; line-height: 60px; }
+  .cta__cleaner { font-size: 30px; line-height: 36px; }
+  .cta__ask { margin-top: 32px; font-size: 30px; line-height: 36px; }
+  .cta__facts { margin-top: 32px; }
+
+  .footer { padding: 48px 0 40px; }
+  .footer__inner { padding: 0 32px; }
+  /* три столбца: ширина — по содержимому, ссылка не переносится */
+  .footer__cols { grid-template-columns: repeat(3, auto); justify-content: space-between; }
+  .footer__links li { white-space: nowrap; }
+}
+
+@media (min-width: 1024px) {
+  .benefits { padding: 96px 0; }
+  .plans__buy .plans__items { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1fr); gap: 24px; }
+
+  /* три шага в ряд; линия пути — от середины первого значка к середине последнего */
+  .how { padding: 96px 0; }
+  .steps {
+    --g: 32px;
+    position: relative;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--g);
+  }
+  .steps::before {
+    content: "";
+    position: absolute;
+    top: 24px;
+    left: calc((100% - 2 * var(--g)) / 6);
+    right: calc((100% - 2 * var(--g)) / 6);
+    height: 1px;
+    background: var(--stroke);
+  }
+  /* шаг растягивается до высоты соседнего — строки внутри шага не растягиваются, всё прижато к верху */
+  .step {
+    grid-template-columns: minmax(0, 1fr);
+    align-content: start;
+    justify-items: center;
+    text-align: center;
+    padding-bottom: 0;
+  }
+  .step:not(:last-child)::after { display: none; }
+  .step:nth-child(2) { --d: 80ms; }
+  .step:nth-child(3) { --d: 160ms; }
+
+  .motto__text { font-size: 72px; line-height: 80px; }
+  .faq { padding: 96px 0; }
+  .cta { padding: 96px 0; }
+  .cta__sphere { width: 240px; height: 240px; }
+  .cta__metla { font-size: 72px; line-height: 72px; }
+  .cta__cleaner { margin-top: 12px; font-size: 36px; line-height: 40px; }
+  /* © слева, товарный знак справа — в одну строку */
+  .footer__base { grid-template-columns: auto auto; justify-content: space-between; gap: 24px; }
+  .screens { padding: 96px 0; }
+  .section-title { font-size: 48px; line-height: 48px; }
+  html:not(.js) .shots { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+}
+
+@media (min-width: 1200px) {
+  .motto__text { font-size: 96px; line-height: 104px; }
+}
+
+/* Компьютер, окно от 1024 × 700: телефон стоит, главы проходят мимо, снимок меняется по главе */
+@media (min-width: 1024px) and (min-height: 700px) {
+  .js .screens__title { text-align: left; }
+  .js .screens__layout {
+    display: grid;
+    grid-template-columns: 300px minmax(0, 1fr);
+    gap: 96px;
+    align-items: start;
+  }
+  .js .screens__layout::before { display: none; }
+  .js .screens__stage {
+    display: block;
+    position: sticky;
+    top: max(80px, calc(50vh - 295px));
+  }
+  .js .screens__stage img {
+    opacity: 0;
+    transition: opacity 600ms var(--ease);
+  }
+  .js .screens__stage img.is-on { opacity: 1; }
+
+  .js .shots {
+    display: block;
+    overflow: visible;
+    padding: 0;
+  }
+  .js .shot {
+    max-width: none;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+  }
+  /* свой снимок главы — только для чтения с экрана: на виду телефон слева */
+  .js .shot .phone {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .js .shot figcaption { margin: 0; max-width: 480px; text-align: left; }
+  .js .shot__title { font-size: 30px; line-height: 36px; }
+  .js .shot__line { margin-top: 12px; font-size: 18px; line-height: 28px; }
+  .js .shots__dots { display: none; }
+  .js [data-reveal="wide"]:not(.is-in) { opacity: 0; transform: translateY(32px); }
+}
+
+@media (max-width: 1023px), (max-height: 699px) {
+  .js [data-reveal="narrow"]:not(.is-in) { opacity: 0; transform: translateY(32px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar,
+  .bar.is-on,
+  .bar .play-badge.is-off,
+  [data-reveal],
+  .js .screens__stage img,
+  .screens__nums li,
+  .shots__dots button::before,
+  .motto__word,
+  .faq__q,
+  .faq__arrow,
+  .footer__links a,
+  .footer__icon { transition: none; }
+  .js [data-reveal]:not(.is-in) { opacity: 1; transform: none; }
+  .js .motto__word:not(.is-lit) { opacity: 1; }
+}

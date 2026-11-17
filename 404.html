@@ -1,0 +1,51 @@
+<!doctype html>
+<!-- Страница «нет такой страницы»: Cloudflare отдаёт её на любой неизвестный адрес (assets.not_found_handling = "404-page",
+     README), поэтому все пути — от корня. Своего адреса языка у неё нет: язык — по языку браузера, ссылка — на / или /ru/. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <script>
+    (function () {
+      var list = navigator.languages || [navigator.language || 'en'];
+      for (var i = 0; i < list.length; i++) {
+        var l = String(list[i]).toLowerCase();
+        if (l.indexOf('ru') === 0) { document.documentElement.lang = 'ru'; break; }
+        if (l.indexOf('en') === 0) break;
+      }
+    })();
+  </script>
+  <title>Page not found — METLA Cleaner</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0B0D17">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" href="/assets/img/favicon-96.png" sizes="96x96" type="image/png">
+  <link rel="icon" href="/assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="preload" href="/assets/fonts/syne-800.woff" as="font" type="font/woff" crossorigin>
+  <link rel="preload" href="/assets/fonts/syncopate-400.woff" as="font" type="font/woff" crossorigin>
+  <link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body>
+  <main class="notfound">
+    <img class="cta__sphere" src="/assets/img/sphere-cta.webp" width="480" height="480" alt="">
+    <p class="cta__name">
+      <span class="cta__metla">METLA</span>
+      <span class="cta__cleaner">CLEANER</span>
+    </p>
+    <h1 class="notfound__title" data-t="title">Page not found</h1>
+    <a class="notfound__home" href="/" data-t="home">Go to the home page</a>
+  </main>
+  <script>
+    // Слова — references/texts.md, «Страница 404»
+    (function () {
+      if (document.documentElement.lang !== 'ru') return;
+      var RU = { title: 'Страница не найдена', home: 'Перейти на главную' };
+      document.title = RU.title + ' — METLA Cleaner';
+      var nodes = document.querySelectorAll('[data-t]');
+      for (var i = 0; i < nodes.length; i++) nodes[i].textContent = RU[nodes[i].getAttribute('data-t')];
+      document.querySelector('.notfound__home').href = '/ru/';
+    })();
+  </script>
+</body>
+</html>

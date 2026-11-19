@@ -204,6 +204,9 @@ html:lang(en) .play-badge img[lang="ru"] { display: none; }
   line-height: 20px;
   color: var(--steel);
 }
+/* строка о России под строкой-фактом: на русской странице — текст, на английской — пусто и не видна */
+.fact + .fact { margin-top: 4px; }
+.fact:empty { display: none; }
 
 /* Сцена: сфера, ничем не закрытая (снимки экрана — в следующем разделе, решение владельца 02.11.2026 в 14:17:02) */
 .hero__stage {

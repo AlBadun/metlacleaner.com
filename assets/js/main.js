@@ -53,6 +53,9 @@
       step2D: 'Open any category to see the files and delete only what you choose. Deleted files go to Quarantine first.',
       step3T: 'Restore',
       step3D: 'Restore files while they’re there. Space is freed when files leave Quarantine.',
+      // ролик (макет 20.11.2026, ждёт «да» владельца)
+      videoTitle: 'METLA in action',
+      videoLabel: 'METLA Cleaner video',
       mottoW1: 'Delete.',
       mottoW2: 'Rethink.',
       mottoW3: 'Restore.',
@@ -146,6 +149,8 @@
       step2D: 'Откройте категорию' + NB + '— увидите файлы и' + NB + 'удалите только то, что выберете. Удалённые файлы сначала уходят в' + NB + 'Карантин.',
       step3T: 'Верните',
       step3D: 'Файлы можно вернуть, пока они там. Место освобождается, когда файлы покидают Карантин.',
+      videoTitle: 'METLA в' + NB + 'деле',
+      videoLabel: 'Ролик METLA Cleaner',
       mottoW1: 'Удалил.',
       mottoW2: 'Передумал.',
       mottoW3: 'Вернул.',
@@ -229,6 +234,18 @@
     for (var s = 0; s < shots.length; s++) {
       shots[s].src = '/assets/img/screen-' + shots[s].getAttribute('data-shot') + '-' + lang + '.webp';
       if (shots[s].hasAttribute('data-alt')) shots[s].alt = t[shots[s].getAttribute('data-alt')];
+    }
+    // Ролик — свой файл по языку страницы; грузится только по нажатию (preload="none"), заставка — кадр со знаком METLA.
+    // При смене языка — новый элемент вместо load(): после load() Chrome грузит ролик и при preload="none" (замер 20.11.2026)
+    var videos = document.querySelectorAll('video[data-video]');
+    for (var v = 0; v < videos.length; v++) {
+      var file = '/assets/video/metla-' + lang + '.mp4';
+      if (videos[v].querySelector('source').getAttribute('src') !== file) {
+        var fresh = videos[v].cloneNode(true);
+        fresh.querySelector('source').setAttribute('src', file);
+        fresh.setAttribute('poster', '/assets/img/video-poster-' + lang + '.webp');
+        videos[v].parentNode.replaceChild(fresh, videos[v]);
+      }
     }
     var buttons = document.querySelectorAll('.lang button');
     for (var j = 0; j < buttons.length; j++) {

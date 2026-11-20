@@ -767,6 +767,34 @@ html:not(.js) .shots__dots { display: none; }
   text-wrap: pretty;
 }
 
+/* Ролик — свой файл с сайта, по нажатию (решение владельца 16.11.2026 в 19:15:06; макет 20.11.2026): рамка телефона, как у
+   снимков; до нажатия грузится только заставка (preload="none") */
+.video { padding: 0 0 64px; }
+.video__inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+.video__phone {
+  width: min(100%, 280px);
+  margin: 0 auto;
+}
+.video__player {
+  grid-area: 1 / 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 9 / 16;
+  border-radius: 32px;
+  background: var(--void);
+}
+/* Кнопки ролика — внутри самого <video> (его тень): фокус на них виден кольцом вокруг ролика, как у остальных (B9;
+   a11y.sh 20.11.2026 — без этого у кнопок ролика не было видимого кольца) */
+.video__player:focus-within {
+  outline: 2px solid var(--aqua);
+  outline-offset: 4px;
+}
+
 /* Слоган — крупно, отдельным разделом (B11; план, 2.5): 48 / 72 / 96 px; на телефоне — слово в строке,
    от 768 — «Delete. Rethink.» / «Restore.»; акцент — как в первом экране. Слова светлеют только прозрачностью. */
 .motto { padding: 96px 0; }
